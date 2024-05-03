@@ -1,0 +1,9 @@
+.title {
+  font-weight: 700;
+  font-size: 2em;
+  padding: 20px;
+}
+
+.home-btn:hover {
+  cursor: pointer;
+}

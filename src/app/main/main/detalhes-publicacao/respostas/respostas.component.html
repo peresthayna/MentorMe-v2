@@ -1,0 +1,25 @@
+<div *ngIf="respostas">
+  <div class="container mb-3" *ngFor="let resposta of respostas">
+    <hr>
+    <p>Respondido em: {{ resposta.data | date: 'dd/MM/yyyy'}}.</p>
+    <span [innerHTML]="resposta.resposta"></span>
+    <div class="user mt-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="container-user">
+            <img [src]="resposta.usuario.avatar">
+            <div>
+              <a href="">{{ resposta.usuario.nome }}</a><br>
+              <span class="score">{{ resposta.usuario.pontuacao }}&nbsp;<i class="bi bi-star-fill"></i></span>&nbsp;
+              <span class="question">{{ resposta.usuario.totalPublicacoes }}&nbsp;<i class="bi bi-question-lg"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-avaliar *ngIf="isUsuarioLogado" [idResposta]="resposta.id"></app-avaliar>
+  </div>
+</div>
+<div *ngIf="!respostas">
+  <p>Seja o primeiro a responder!</p>
+</div>

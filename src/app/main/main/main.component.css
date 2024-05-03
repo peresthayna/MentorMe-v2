@@ -1,0 +1,19 @@
+.container {
+  min-height: calc(100vh - 60px);
+}
+
+.publicacao {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  max-height: 46px;
+  width: 80%;
+}
+
+.hr-pub {
+  color: #b0b0b0;
+}
+
+.pub:hover {
+  cursor: pointer;
+}

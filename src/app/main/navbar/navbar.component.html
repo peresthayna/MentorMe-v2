@@ -1,0 +1,16 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <div>
+      <button #btn type="button" class="btn btn-light mx-4" pTooltip="Menu" (click)="slideMenu.toggle($event)"><i class="bi bi-list"></i></button>
+      <p-slideMenu #slideMenu [model]="menu" [popup]="true" [viewportHeight]="170"></p-slideMenu>
+      <img src="assets/icons/mentor.png" class="pb-2 home-btn" height="40" (click)="home()">
+      <span class="title home-btn" (click)="home()">MentorMe</span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Pesquisar">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+    </div>
+  </ng-template>
+</p-menubar>

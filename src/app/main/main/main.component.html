@@ -1,0 +1,35 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="header col-6">
+      <h2>Todas as questões</h2>
+      <span>{{ total == 1 ? '1 questão' : total + ' questões' }}</span>
+    </div>
+    <div class="filter col-6 text-end">
+      <button class="btn btn-secondary" (click)="fazerPergunta()">Fazer pergunta</button><br>
+      <button #btn type="button" class="btn btn-light" (click)="menu.toggle($event)"><i class="bi bi-filter"></i> Filtrar</button>
+      <p-slideMenu #menu [model]="itemsFilter" [popup]="true" [viewportHeight]="193"></p-slideMenu>
+    </div>
+  </div><hr>
+  <div *ngIf="publicacoes.length == 0" class="text-center">
+    <h5>Não existem publicacões no momento.</h5>
+  </div>
+  <div *ngIf="publicacoes.length > 0">
+    <div *ngFor="let publicacao of publicacoes" class="row">
+      <div class="col-2 text-center">
+        <small>{{ publicacao.visualizacoes == 1 ? '1 visualização' : publicacao.visualizacoes + ' visualizações' }}</small><br>
+        <small>{{ publicacao.respostas.length == 1 ? '1 resposta' : publicacao.respostas.length + ' respostas' }}</small>
+      </div>
+      <div class="pub col-8 mb-2" (click)="selecionarPublicacao(publicacao.id)">
+        <h5 class="mx-1">{{ publicacao.titulo }}</h5>
+        <div style="display: inline-block;">
+          <p-tag [value]="tag.nomeTag" *ngFor="let tag of publicacao.publicacaoTags" class="mx-1"></p-tag>
+        </div>
+      </div>
+      <div class="col-2 text-center">
+        <a>{{ publicacao.usuario.nome }}</a><br>
+        <small>{{ publicacao.quantoTempoFoiPostado }}</small>
+      </div>
+      <hr class="hr-pub">
+    </div>
+  </div>
+</div>

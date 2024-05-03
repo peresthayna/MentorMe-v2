@@ -1,0 +1,13 @@
+<div>
+  <div class="container-stars">
+    <div *ngFor="let star of [0,1,2,3,4]; let i = index" style="display: inline-block; padding: 1px;">
+      <i [ngClass]="star <= hoverIndex && respostaIndex == idResposta ? 'bi bi-star-fill yellow' : 'bi bi-star-fill black'"
+      (mouseenter)="onHover(i, star, idResposta)" (mouseleave)="onLeave()" (click)="selecionarEstrela(i, star)"></i>
+    </div>
+  </div>
+  <div *ngIf="mostrarConfirmacao && respostaIndex == idResposta">
+    <span>Confirmar avaliação:</span>&nbsp;
+    <i class="bi bi-hand-thumbs-up-fill" (click)="enviarAvaliacao(idResposta, hoverIndex)"></i>
+    <i class="bi bi-hand-thumbs-down-fill" (click)="onLeave()"></i>
+  </div>
+</div>

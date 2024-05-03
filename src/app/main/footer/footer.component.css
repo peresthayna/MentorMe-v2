@@ -1,0 +1,11 @@
+footer {
+  background-color: #495057;
+  color: #FFFFFF;
+  width: 100vw;
+  padding-top: 20px;
+}
+
+footer a {
+  text-decoration: underline;
+  color: #FFFFFF;
+}

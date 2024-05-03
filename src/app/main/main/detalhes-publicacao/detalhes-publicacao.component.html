@@ -1,0 +1,31 @@
+<div class="container" *ngIf="publicacaoSelecionada">
+  <h2>{{publicacaoSelecionada.titulo}}</h2>
+  <p>
+    Data de publicação: {{publicacaoSelecionada.dataInicio | date: 'dd/MM/yyyy'}}.
+    Vista {{ publicacaoSelecionada.visualizacoes == 1 ? '1 vez' : publicacaoSelecionada.visualizacoes+' vezes' }}.
+  </p><hr>
+  <div [innerHTML]="publicacaoSelecionada.publicacao"></div>
+  <p-tag *ngFor="let tag of publicacaoSelecionada.publicacaoTags" class="m-1">{{tag.nomeTag}}</p-tag>
+  <div class="user mt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="container-user" *ngIf="publicacaoSelecionada.usuario">
+          <img [src]="publicacaoSelecionada.usuario.avatar">
+          <div>
+            <a href="">{{ publicacaoSelecionada.usuario.nome }}</a><br>
+            <span class="score">{{ publicacaoSelecionada.usuario.pontuacao }}&nbsp;<i class="bi bi-star-fill"></i></span>&nbsp;
+            <span class="question">{{ publicacaoSelecionada.usuario.totalPublicacoes }}&nbsp;<i class="bi bi-question-lg"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted text-center">
+        <small>{{ publicacaoSelecionada.quantoTempoFoiPostado }}</small>
+      </div>
+    </div>
+  </div>
+  <h4 class="mt-2">Respostas:</h4>
+  <span *ngIf="!publicacaoSelecionada.respostas || publicacaoSelecionada.respostas.length === 0">Seja o primeiro a responder.</span>
+  <app-respostas [respostas]="publicacaoSelecionada.respostas" *ngIf="publicacaoSelecionada.respostas" [isUsuarioLogado]="isUsuarioLogado"></app-respostas>
+  <app-responder [idPublicacao]="publicacaoSelecionada.id" *ngIf="isUsuarioLogado"></app-responder>
+  <p *ngIf="!isUsuarioLogado">Faça o <a routerLink="/login">Login</a> para responder.</p>
+</div>
